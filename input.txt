@@ -1,0 +1,8 @@
+void f(int b) {
+//int a = b;
+
+}
+
+int main(){
+char a = 256;
+}
