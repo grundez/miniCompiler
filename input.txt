@@ -1,0 +1,11 @@
+void f(){
+    int a = 3;
+    while (a>0) {a=a-2;}
+    int b = 5;
+    while (b>0) {b=b+2;}
+}
+void main(){
+    int b = 5, k=10;
+    while (b>0) {b = b-1; k = k + b;}
+    f();
+}

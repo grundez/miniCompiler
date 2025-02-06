@@ -1,16 +1,45 @@
-﻿#include <cstdio>
-#include "defines.h"
-#include "Scanner.h"
+﻿#define _CRT_SECURE_NO_WARNINGS
 
-int main() {
-    int typeData;
-    LEX l;
-    TScanner scanner;  // Создаем экземпляр класса TScaner
-    scanner.getData(); // считываем файл
+#include "diagram.hpp"
+#include <iomanip>
 
-    do {
-        typeData = scanner.scanner(l); // сканируем данные
-        printf("typeData: %d, lexem: %s\n", typeData, l);
-    } while (typeData != typeEnd);
+
+int main(int argc, char* argv[])
+{
+    TScaner* scaner;
+    scaner = new TScaner("input.txt");
+    TDiagram* diagram = new TDiagram(scaner);
+
+	diagram->program();
+
+    int type; type_lex lex;
+    type=scaner->scaner(lex);
+    std::cout << "\nOutput result: " << std::endl;
+    if (type == TEnd)
+        std::cout << "Succsess" << std::endl;
+    else
+		std::cout << "ERROR" << std::endl;
+    //std::cout << "\nSemantic tree build:\n";
+    //diagram->root->Print(0);
+}
+
+/*
+int main(int argc, char* argv[]) 
+{
+    TScaner* scaner;
+    int type;
+    type_lex lex;
+
+    if (argc <= 1) 
+        scaner = new TScaner("input.txt");
+    else 
+        scaner = new TScaner(argv[1]);
+    do
+    {
+        type = scaner->scaner(lex);
+        std::cout << std::setw(32) << lex << "   type of:    " << type << std::endl;
+    } while (type != TEnd);
+    delete scaner;
     return 0;
 }
+*/
